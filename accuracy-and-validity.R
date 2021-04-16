@@ -5,7 +5,7 @@ library(tidyverse)
 library(ggforce)
 library(ggtext)
 library(patchwork)
-
+library(here)
 
 circles <- data.frame(
   x0 = rep(0, 5),
@@ -78,3 +78,5 @@ plot.nanv <- ggplot() +
 plot.com <- wrap_plots(plot.av, plot.nav, plot.anv, plot.nanv)
 
 plot.com
+
+ggsave(here("accuracy-and-validity.png"))
