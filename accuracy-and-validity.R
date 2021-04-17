@@ -15,19 +15,19 @@ circles <- data.frame(
 
 data.av <- tibble(x = rnorm(1e3, 0, 0.1),
                   y = rnorm(1e3, 0, 0.1),
-                  group = "Valid, Accurate") 
+                  group = "Valid, Reliable") 
 
 data.anv <- tibble(x = rnorm(1e3, 0.5, 0.1),
                   y = rnorm(1e3, 0.5, 0.1),
-                  group = "Not Valid, Accurate") 
+                  group = "Not Valid, Reliable") 
 
 data.nav <- tibble(x = rnorm(1e3, 0, 0.25),
                    y = rnorm(1e3, 0, 0.25),
-                   group = "Valid, Not Accurate") 
+                   group = "Valid, Not Reliable") 
 
 data.nanv <- tibble(x = rnorm(1e3, -0.5, 0.25),
                    y = rnorm(1e3, -0.6, 0.25),
-                   group = "Not Valid, Not Accurate") 
+                   group = "Not Valid, Not Reliable") 
 
 
 
@@ -39,7 +39,7 @@ plot.av <- ggplot() +
   theme(title = element_markdown(size = 15, face = "bold")) +
   scale_x_continuous(limits = c(-1.25, 1.25)) +
   scale_y_continuous(limits = c(-1.25, 1.25)) +
-  labs(title = "Valid, Accurate")
+  labs(title = "Valid, Reliable")
 
 
 plot.anv <- ggplot() +
@@ -50,7 +50,7 @@ plot.anv <- ggplot() +
   theme(title = element_markdown(size = 15, face = "bold")) +
   scale_x_continuous(limits = c(-1.25, 1.25)) +
   scale_y_continuous(limits = c(-1.25, 1.25)) +
-  labs(title = "Not Valid, Accurate")
+  labs(title = "Not Valid, Reliable")
 
 plot.nav <- ggplot() +
   geom_circle(data = circles, aes(x0 = x0, y0 = y0, r = r, fill = r), alpha = 0.4, show.legend = FALSE) +
@@ -60,7 +60,7 @@ plot.nav <- ggplot() +
   theme(title = element_markdown(size = 15, face = "bold")) +
   scale_x_continuous(limits = c(-1.25, 1.25)) +
   scale_y_continuous(limits = c(-1.25, 1.25)) +
-  labs(title = "Valid, Not Accurate")
+  labs(title = "Valid, Not Reliable")
 
 
 plot.nanv <- ggplot() +
@@ -71,7 +71,7 @@ plot.nanv <- ggplot() +
   theme(title = element_markdown(size = 15, face = "bold")) +
   scale_x_continuous(limits = c(-1.25, 1.25)) +
   scale_y_continuous(limits = c(-1.25, 1.25)) +
-  labs(title = "Not Valid, Not Accurate")
+  labs(title = "Not Valid, Not Reliable")
 
 
 
