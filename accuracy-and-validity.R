@@ -7,26 +7,28 @@ library(ggtext)
 library(patchwork)
 library(here)
 
+N <- 1e2
+
 circles <- data.frame(
   x0 = rep(0, 5),
   y0 = rep(0, 5),
   r = seq(0.1, 1, length.out = 5)
 )
 
-data.av <- tibble(x = rnorm(1e3, 0, 0.1),
-                  y = rnorm(1e3, 0, 0.1),
+data.av <- tibble(x = rnorm(N, 0, 0.1),
+                  y = rnorm(N, 0, 0.1),
                   group = "Valid, Reliable") 
 
-data.anv <- tibble(x = rnorm(1e3, 0.5, 0.1),
-                  y = rnorm(1e3, 0.5, 0.1),
+data.anv <- tibble(x = rnorm(N, 0.5, 0.1),
+                  y = rnorm(N, 0.5, 0.1),
                   group = "Not Valid, Reliable") 
 
-data.nav <- tibble(x = rnorm(1e3, 0, 0.25),
-                   y = rnorm(1e3, 0, 0.25),
+data.nav <- tibble(x = rnorm(N, 0, 0.25),
+                   y = rnorm(N, 0, 0.25),
                    group = "Valid, Not Reliable") 
 
-data.nanv <- tibble(x = rnorm(1e3, -0.5, 0.25),
-                   y = rnorm(1e3, -0.6, 0.25),
+data.nanv <- tibble(x = rnorm(N, -0.5, 0.25),
+                   y = rnorm(N, -0.6, 0.25),
                    group = "Not Valid, Not Reliable") 
 
 
@@ -79,4 +81,4 @@ plot.com <- wrap_plots(plot.av, plot.nav, plot.anv, plot.nanv)
 
 plot.com
 
-ggsave(here("accuracy-and-validity.png"))
+ggsave(here("accuracy-and-validity.png"), dpi = 400)
